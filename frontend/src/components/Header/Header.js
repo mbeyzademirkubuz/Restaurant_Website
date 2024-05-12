@@ -1,6 +1,7 @@
 import React from 'react'
 import classes from './header.module.css';
 import { Link } from 'react-router-dom';
+import { useCart } from '../../Hook/useCart';
 
 export default function Header() {
 
@@ -8,9 +9,9 @@ export default function Header() {
         name: 'Jhon', 
     }
 
-    const cart = {
-        totalCount: 10, 
-    }
+
+
+    const {cart} = useCart();
 
     const logout = () => {}
 
@@ -27,13 +28,13 @@ export default function Header() {
               <li className={classes.menu_container}>
                 <Link to="/dashboard">{user.name}</Link>
                 <div className={classes.menu}>
-                  <Link to="/profile">Profile</Link>
-                  <Link to="/orders">Orders</Link>
-                  <a onClick={logout}>Logout</a>
+                  <Link to="/profile">Profil</Link>
+                  <Link to="/orders">Siparişler</Link>
+                  <a onClick={logout}>Çıkış Yap</a>
                 </div>
               </li>
             ) : (
-              <Link to="/login">Login</Link>
+              <Link to="/login">Giriş Yap</Link>
             )}
 
             <li>
